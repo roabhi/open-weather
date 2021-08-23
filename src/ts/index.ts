@@ -23,7 +23,6 @@ const init = (e:Event) => {
 
     message.innerHTML += "           this is a test".trimStart();
 
-    console.log('ready');
 }
 
 
