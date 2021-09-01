@@ -21,12 +21,20 @@
           <span title="close"></span>			
           </div>			
         </form>
-      <ul role="list">
-              <!-- <li>Barcelona<a href="#">+<span>Catalonia, Spain</span></a></li>
-              <li><a href="#">Hello there<span></span></a></li>
-              <li><a href="#">Hello there<span></span></a></li>
-              <li><a href="#">Hello there<span></span></a></li> -->
-      </ul>		
+      <ul role="list"></ul>		
+	</div>
+  <div id="holder" class="holder" role="application">
+		<header role="search" class="active">
+			<h3><span title="search location" role="button">no location</span><br/>now</h3><h3 class="celsius"><span class="temp" title="swap degrees meassure" data-celsius="" data-fahrenheit="" role="button">&deg;</span></h3>
+		</header>
+		<div id="main" role="main" class="container faded">
+			<div id="big" class=""><span></span></div>
+		</div>
+		<footer role="complementary">
+			<ul role="list">
+				<li role="listitem"><span>later</span><div class="mini_wrapper"><div class=""><span></span></div></div><span class="temp"></span></li><li role="listitem"><span>tomorrow</span><div class="mini_wrapper"><div class=""><span></span></div></div><span class="temp"></span></li><li role="listitem"><span>&mdash;</span><div class="mini_wrapper"><div class=""><span></span></div></div><span class="temp"></span></li>
+			</ul>
+		</footer>		
 	</div>
 </body>
 <script src="./ts/index.ts"></script>
