@@ -3,11 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Specific Metas
+  	================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Other meta -->
+    <meta name="description" content="Simple weather application for the web">
+	<meta name="keywords" content="weather app application world weather online location cities rain sun cloud snow mist">
+	<meta name="author" content="Roberto Abril Hidalgo">
+    <!-- Title -->
     <title>Open Weather</title>
 </head>
 <body>
-    <h1 id="test">Hello there also </h1>
+    <div id="top" class="top using">
+      <form id="form1" runat="server">
+          <div>
+              <input id="search" type="text" name="input" autocomplete="off" placeholder="Search Location">
+          <span title="close"></span>			
+          </div>			
+        </form>
+      <ul role="list">
+              <!-- <li>Barcelona<a href="#">+<span>Catalonia, Spain</span></a></li>
+              <li><a href="#">Hello there<span></span></a></li>
+              <li><a href="#">Hello there<span></span></a></li>
+              <li><a href="#">Hello there<span></span></a></li> -->
+      </ul>		
+	</div>
 </body>
 <script src="./ts/index.ts"></script>
 </html>
