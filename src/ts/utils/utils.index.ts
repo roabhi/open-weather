@@ -1,35 +1,9 @@
-import { temps } from "../globals/globals.dom";
 
-export const switchTempUnits = () => {
+
+export const getColor = (_deg:number):string => {
     
-    console.log('switching temps')
-    
-    Array.from(temps).map((_obj) => {
-        
-        const _o = _obj as Element
-        
-        if(_o.hasAttribute('data-celsius') && _o.hasAttribute('data-fahrenheit')){
+    //? Using Farhenit temp units to avoid conflict with negative values
 
-            const _p:HTMLElement = _o.parentElement
-
-            if(_p.className == 'celsius'){
-
-                _o.innerHTML = `${_o.getAttribute('data-fahrenheit')}&deg;`
-                _p.className = 'fahrenheit'
-
-
-            }else if(_p.className == 'fahrenheit') {
-                _o.innerHTML = `${_o.getAttribute('data-celsius')}&deg;`
-                _p.className = 'celsius'
-            }
-
-             
-
-        }
-    })
-},
-getColor = (_deg:number):string => {
-    
     let color 
 
     switch(true) {

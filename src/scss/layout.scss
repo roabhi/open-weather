@@ -168,10 +168,13 @@ div.holder {
 
     footer {
         position:absolute;
-        bottom:4.166666666666667%;
+        // bottom:4.166666666666667%;
+        bottom:0;
         left:0;
         width:100%;
         color:#fff;
+
+        height:5.125rem;
 
         ul {
             list-style:none;	
@@ -182,10 +185,16 @@ div.holder {
             text-transform:uppercase;
             line-height:1.688;	
 
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            height:100%;
+
             li {
-                display:inline-block;
-                width:33.33333%;
-                vertical-align:middle;
+                // display:inline-block;
+                 width:33.33333%;
+                // vertical-align:middle;
+                height:100%;
 
                 span:first-of-type, span:last-of-type {
                     display:block;
