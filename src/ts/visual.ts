@@ -1,4 +1,7 @@
-import { temps, top } from "./globals/globals.dom"
+import { temps, 
+         top 
+} from "./globals/globals.dom"
+
 import { Location } from "./types/weather.api"
 import { getColor } from "./utils/utils.index";
 

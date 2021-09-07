@@ -1,10 +1,21 @@
-import { top, search, header } from "./globals/globals.dom";
+import { top, 
+         search, 
+         header 
+} from "./globals/globals.dom";
+
 import { Forecast } from './types/weather.api';
 import { Fetch } from './classes/Fetch';
 import { key } from "./globals/globals.index";
 
+import { switchTempUnits, 
+         populateSearch, 
+         insertSearch, 
+         setBgColor, 
+         setInfo, 
+         setAttributes 
+} from "./visual";
 
-import { switchTempUnits, populateSearch, insertSearch, setBgColor, setInfo, setAttributes } from "./visual";
+
 
 const fecther = new Fetch();
 
@@ -16,6 +27,8 @@ export const getWeather = (_name:string, _lat:string, _lon:string) => {
         const data:Forecast = _res as unknown as Forecast
 
         console.log(`Current condition for ${_name.substr(0, _name.indexOf(','))} is ${data.current.condition.text} and it feels like ${data.current.feelslike_c} and its code for CSS icons is ${data.current.condition.code}`)
+
+        console.info(data.current.condition.code)
 
         // 
 
@@ -33,20 +46,18 @@ export const getWeather = (_name:string, _lat:string, _lon:string) => {
   
         setInfo(
             [header.querySelector('h3:first-of-type span'), header.querySelector('h3:last-of-type span')], 
-            [_name.substr(0, _name.indexOf(',')), `${Math.round(data.current.feelslike_c).toString()}&deg;` ]
+            [_name.substr(0, _name.indexOf(',')), `${Math.round(data.current.temp_c).toString()}&deg;` ]
         )
 
         setAttributes(
             [header.querySelector('h3:last-of-type span'), header.querySelector('h3:last-of-type span') ], 
             ['data-celsius', 'data-fahrenheit'], 
-            [Math.round(data.current.feelslike_c).toString(), Math.round(data.current.feelslike_f).toString()]
-        )
-
-        
+            [Math.round(data.current.feelslike_c).toString(), Math.round(data.current.temp_f).toString()]
+        )        
 
         setBgColor(
             [document.body], 
-            data.current.feelslike_f
+            data.current.temp_f
         )
 
     })
@@ -114,8 +125,6 @@ onSearchKeyUp = (e:Event):void => {
 
     if(_s.value.length > 2) {       
 
-        //setTimeout( () => { 	}, 500)
-
         searchLocation( _s.value )
 
     }
@@ -127,6 +136,8 @@ onHeaderTempClick = (e:Event):void => {
 },
 
 init = ():void => {
+
+    
 
     search.addEventListener('keyup', onSearchKeyUp , false)
 

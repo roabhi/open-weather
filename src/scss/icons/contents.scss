@@ -1,0 +1,217 @@
+@import url(./animations.scss);
+
+
+// ? CLEAR + MIST 
+
+// * DAYTIME
+
+._1000_day:before, ._1030_day:before {
+
+	background: rgba(255,255,0,1); 
+	border-radius: 50%; 
+	animation:pulse 8s ease infinite;	
+	content: '';  
+	height: 5rem;
+	width: 5rem;  	
+	position:absolute;
+	left: 0; 
+	top: 0;		
+	border: 0.313rem solid rgba(255,255,0,0.5);
+}
+
+// TODO NOT SURE IF NECESSARY
+// ._1000_day:after {
+//     position:absolute;
+// 	width:5rem;
+// 	height:5rem;
+// 	border-radius: 50%;
+// 	content:'';
+// 	top:0;
+// 	left:0;
+// }
+
+._1000_night:before, ._1030_night:before {
+    content:'';
+	background:transparent;
+	width:0.250rem;
+	height:0.250rem;
+	transform:scale(1.250) translateY(-.5rem);
+	transform-origin:center center;
+	border-radius:50%;
+	
+	bottom:-3.125rem;
+	left:0.125rem;
+	
+	
+	position:absolute;
+	
+	box-shadow:  
+      	 1.625rem 0.438rem 0 -0.063rem #f5fffa, 
+      	 -2.250rem -1.188rem 0 -0.063rem rgba(245,255,250,0.1), 
+      	 -3.188rem -2.125rem 0 -0.063rem rgba(245,255,250,0.1),
+      	 -3.250rem -3.875rem 0 -0.063rem #f5fffa, 
+      	 2.563rem -1.188rem rgba(245,255,250,0.1),  
+      	 2.125rem -3.125rem #f5fffa,
+      	 0.875rem -4.438rem 0 -0.063rem rgba(245,255,250,0.1),
+      	 4rem -1.313rem 0 -0.063rem #f5fffa, 
+      	 2rem -5.313rem 0 -0.063rem rgba(245,255,250,0.1),
+      	 4rem -5.625rem #f5fffa,
+      	 3.750rem -4.188rem 0 -0.063rem rgba(245,255,250,0.1),  
+      	 2.125rem -7.938rem #f5fffa,
+      	 -1.625rem -6.438rem 0 -0.063rem rgba(245,255,250,0.1);		
+		
+	animation:stars 7s ease infinite;
+}
+
+
+
+// ? CLOUD SHADOW ::after CONTENT
+
+//  *  Partly Cloudy, Cloudy
+
+._1009_day:after, ._1009_night:after {
+    background: #000000;
+	border-radius: 50%;
+	content: '';
+	height: 0.938rem;
+	width: 7.500rem;
+	opacity: .2;
+	position: absolute;
+	left: 0.313rem; 
+	bottom: -3.5rem;
+    transform: scale(.7);
+	
+	animation:cloud_shadow 5s ease-in-out infinite;
+}
+
+
+// ? MIST
+// ? ===============================
+
+// * DAY
+
+._1030_day:before {
+    animation:mist_daytime 8s ease infinite;
+}
+
+._1030_day span:before, ._1030_night span:before {
+    content:'';
+	display:block;
+	background:transparent;
+	height:inherit;
+	width:100%;
+	position:absolute;
+	
+	border-radius:0.625rem;
+	
+	box-shadow:
+		-1rem 1rem 0 0 #fafafa,
+		1.25rem 2rem 0 0 #fafafa,
+		-0.25rem 3rem 0 0 #fafafa;
+	
+	animation:mist 10s ease infinite;
+}
+
+// * NIGHT
+
+._1030_night span:before {
+    top:1.65rem;
+	left:-1.5rem;
+	width:5rem;
+}
+
+// ? LIGHT RAIN
+// ? ===============================
+
+._1063_day:before, ._1063_night:before, ._1150_day:before, ._1150_night:before, ._1153_day:before, ._1153_night:before, ._1180_day:before, ._1180_night_before, ._1183_day:before, ._1183_night:before, ._1198_day:before, ._1198_night:before, ._1204_day:before, ._1207_night:before, ._1240_day:before, ._1240_night:before, ._1249_day:before, ._1249_night:before {
+	content: '';
+	background: transparent;
+	border-radius: 50%;
+	display: block;
+	height: 0.375rem;
+	width: 0.188rem;
+	opacity:.5;
+	
+	animation:light_rain 1s linear infinite ;
+}
+
+// ? MODERATE RAIN
+// ? ===============================
+
+._1186_day:before, ._1186_night:before, ._1243_day:before, ._1243_night:before, ._1246_day:before, ._1246_night:before, ._1246_day:before, ._1249_night:before {
+	content: '';
+	background: transparent;
+	border-radius: 50%;
+	display: block;
+	height: 0.375rem;
+	width: 0.188rem;
+	opacity: 0.3;
+	
+	animation:moderate_rain 1s linear infinite ;
+}
+
+// ? HEAVY RAIN
+// ? ===============================
+
+._1192_day:before, ._1192_night:before, ._1195_day:before, ._1195_night:before {
+
+	content: '';
+	background: transparent;
+	border-radius: 50%;
+	display: block;
+	height: 0.375rem;
+	width: 0.188rem;
+	opacity:.5;
+	
+	animation:moderate_rain 0.5s linear infinite;
+
+}
+
+
+// ? LIGHT SNOW
+// ? ===============================
+
+._1210_day:before, ._1210_night:before, ._1213_day:before, ._1213_night:before, ._1222_day:before, ._1222_night:before, ._1255_day:before, ._1255_night:before, ._1261_day:before, ._1261_night:before  {
+
+	animation: light_snow 2s linear infinite ;
+	content: '';
+	border-radius: 50%;
+	display: block;
+	height: 0.438rem;
+	width: 0.438rem;
+	opacity: 0.8;
+	transform: scale(.9);
+
+}
+
+// ? MODERATE SNOW
+// ? ===============================
+
+._1216_day:before, ._1216_night:before, ._1219_day:before, ._1219_night:before, ._1258_day:before, ._1258_night:before, ._1264_day:before, ._1264_night:before {
+	animation: moderate_snow 1s linear infinite ;
+	content: '';
+	border-radius: 50%;	
+	display: block;
+	height: 0.438rem;
+	width: 0.438rem;
+	opacity: 0.8;
+	transform: scale(.9);
+}
+
+// ? HEAVY SNOW
+// ? ===============================
+
+._1225_day:before, ._1225_night:before {
+
+	animation: moderate_snow 0.5s linear infinite; /* For hard snow use moderate snow but make the loop shorter	*/
+	content: '';
+	border-radius: 50%;
+	display: block;
+	height: 0.438rem;
+	width: 0.438rem;
+	opacity: 0.8;
+	transform: scale(.9);
+
+}
+
+
