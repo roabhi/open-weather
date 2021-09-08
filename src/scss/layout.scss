@@ -2,8 +2,8 @@
 @import url(./icons/shapes.scss);
 
 body {
-    //background:#202020 none;
-    background:#b7c781 none;
+    background:#202020 none;
+    // background:#85ccc5 none;
     overflow-y:hidden;
 
     transition:background 0.5s linear;
@@ -204,8 +204,9 @@ div.holder {
                 }
 
                 div.mini_wrapper {
-                    color:#85ccc5; /* This needs to change dinamically	*/
-                    transform:scale(.45);
+                    // color:#85ccc5; /* This needs to change dinamically	*/
+                    color:currentColor;
+                    transform:scale(.40);
                     padding:0.750rem 0;
                     position:relative;
                     text-align:center;
@@ -216,16 +217,16 @@ div.holder {
                         position:relative;
 	                    margin:0 auto;
                         
-                        &._1192_day, &._1009_day, &._1009_night {
+                        &._1003_day, &._1003_night, &._1192_day, &._1009_day, &._1009_night, &._1189_day, &._1189_night, &._1063_day, &._1063_night {
                             margin:0 auto;
                             left:-2.125rem;
                             top:1.5rem;
                             
                         } // ? FIX FOR ICONS WITH CLOUDS
 
-                        &:after {
-                            display:none
-                        }
+                        // &:after {
+                        //     display:none
+                        // }
                     }
                 }
             }

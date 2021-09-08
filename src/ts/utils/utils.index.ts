@@ -45,4 +45,24 @@ export const getColor = (_deg:number):string => {
     }
 
     return color
+},
+
+getDayLightPhase = (_val:number):string => {
+
+    return _val > 0 ? 'day' : 'night'
+
+},
+
+getCurrentHour = ():number => {
+
+    const rightNow:Date = new Date()
+
+    return rightNow.getHours() 
+
+},
+
+getCurrentDay = ():number => {
+    const rightNow:Date = new Date()
+
+    return rightNow.getDay()
 }

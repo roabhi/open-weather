@@ -6,13 +6,29 @@ import { Location } from "./types/weather.api"
 import { getColor } from "./utils/utils.index";
 
 
-export const setBgColor = (_els:Node[], _deg:number):void => {
+export const setWeather = ():void => {
+
+
+
+},
+
+setTempColors = (_els:Node[], _deg:number):void => {
 
     _els.map((_obj) => {
 
-        const _o:HTMLElement = _obj as HTMLElement        
-        _o.style.background = getColor(_deg)
+        const _o:HTMLElement = _obj as HTMLElement   
+        
+        if(_o.tagName == 'BODY') {
+            _o.style.background = getColor(_deg)
+        } else {
+            _o.style.color = getColor(_deg)
+        }
+
+        
     })
+
+
+    
 
 
 },
@@ -74,9 +90,7 @@ populateSearch = (_data:JSON):DocumentFragment => {
 
             newLi.append(newSpan, newLink)
 
-            fragment.append(newLi)
-
-            // top.querySelector('ul').appendChild(newLi)
+            fragment.append(newLi)            
 
         }
 

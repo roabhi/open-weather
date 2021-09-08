@@ -1,19 +1,26 @@
 import { top, 
          search, 
-         header 
+         header,
+         currentWeatherIcon,
+         laterWeatherIcon,
+         tomorrowWeatherIcon,
+         afterTomorrowWeatherIcon 
 } from "./globals/globals.dom";
 
 import { Forecast } from './types/weather.api';
 import { Fetch } from './classes/Fetch';
-import { key } from "./globals/globals.index";
+import { key, weekDays } from "./globals/globals.index";
 
 import { switchTempUnits, 
          populateSearch, 
          insertSearch, 
-         setBgColor, 
+         setTempColors, 
          setInfo, 
          setAttributes 
 } from "./visual";
+
+import { getCurrentDay, getCurrentHour, getDayLightPhase } from "./utils/utils.index";
+
 
 
 
@@ -28,7 +35,7 @@ export const getWeather = (_name:string, _lat:string, _lon:string) => {
 
         console.log(`Current condition for ${_name.substr(0, _name.indexOf(','))} is ${data.current.condition.text} and it feels like ${data.current.feelslike_c} and its code for CSS icons is ${data.current.condition.code}`)
 
-        console.info(data.current.condition.code)
+        
 
         // 
 
@@ -40,7 +47,69 @@ export const getWeather = (_name:string, _lat:string, _lon:string) => {
         //     }
         // }
 
-        // TODO Create Class Object based on returned data from API
+        // TODO Create Class Object based on returned data from API - OPTIONAL, let's see if we can do it without
+
+        // TODO VALIDATE HERE CURRENT TIME STAMP
+
+        console.log(data)
+
+        console.info(`current condition code is ${data.current.condition.code}, and is_day equals to ${data.current.is_day}`)
+
+        console.log(`later hour condition code is , ${data.forecast.forecastday[0].hour[getCurrentHour() + 1].condition.code}, woudl be ${getDayLightPhase(data.forecast.forecastday[0].hour[getCurrentHour() + 1].is_day)}, the min temp for later would be ${data.forecast.forecastday[0].day.avgtemp_c}, the max temp for later would be ${data.forecast.forecastday[0].hour[getCurrentHour() + 1].temp_c}`)
+
+        console.log(`tomorrow forecast code would be ${data.forecast.forecastday[1].day.condition.code}, the min temp would be ${data.forecast.forecastday[1].day.mintemp_c}, the max temp woudl be ${data.forecast.forecastday[1].day.maxtemp_c}`)
+
+        console.log(`the day after tomorrow is ${weekDays[getCurrentDay() + 2]}, the forecast code is ${data.forecast.forecastday[2].day.condition.code}, the min temp would be ${data.forecast.forecastday[2].day.mintemp_c}, the max temp woudl be ${data.forecast.forecastday[2].day.maxtemp_c}`)
+
+        // * TEMP TEST FOR setWeather
+        // * ===========================
+        // * For current Weather :
+
+        // * data.current.condition.code, --> icon code
+        // * data.current.is_day --> if day or night
+
+        currentWeatherIcon.className = `_${data.current.condition.code}_${getDayLightPhase(data.current.is_day)}`
+
+        // * For later
+        // * data.forecast.forecastday[0].hour[getCurrentHour() + 1].condition.code --> icon code
+        // * data.forecast.forecastday[0].hour[getCurrentHour() + 1].is_day --> if day or night
+        // * data.forecast.forecastday[0].day.mintemp_c --> min av temp for the day
+        // * data.forecast.forecastday[0].day.maxtemp_c --> max temp for the current day
+
+        laterWeatherIcon.className = `_${data.forecast.forecastday[0].hour[getCurrentHour() + 1].condition.code}_${getDayLightPhase(data.forecast.forecastday[0].hour[getCurrentHour() + 1].is_day)}`
+        
+        // * For Tomorrow
+        // * data.forecast.forecastday[1].day.condition.code --> icon code
+        // * data.forecast.forecastday[1].day.mintemp_c --> min avg temp for the day
+        // * data.forecast.forecastday[1].day.maxtemp_c --> max avg temp for the day
+
+        tomorrowWeatherIcon.className = `_${data.forecast.forecastday[1].day.condition.code}_day`
+        
+        
+        // * For day after tomorrow
+        // * weekDays[getCurrentDay() + 2] --> which day of week 
+        // * data.forecast.forecastday[2].day.condition.code --> icon code
+        // * data.forecast.forecastday[2].day.mintemp_c --> min avg temp for the day
+        // * data.forecast.forecastday[2].day.maxtemp_c --> max avg temp for the day
+
+        afterTomorrowWeatherIcon.className = `_${data.forecast.forecastday[2].day.condition.code}_day`
+
+
+        // * SET TEMP TEXT
+
+
+
+        // setWeather(
+
+            //data, data.current.condition.code, data.current.is_day, data.forecast.forecastday[0].hour[getCurrentHour() + 1]
+        // )
+
+        laterWeatherIcon.parentNode.parentNode.querySelector('span.temp').innerHTML = `${Math.round(data.forecast.forecastday[0].day.mintemp_c)}&deg/${Math.round(data.forecast.forecastday[0].day.maxtemp_c)}&deg;`
+
+        tomorrowWeatherIcon.parentNode.parentNode.querySelector('span.temp').innerHTML = `${Math.round(data.forecast.forecastday[1].day.mintemp_c)}&deg;/${Math.round(data.forecast.forecastday[1].day.maxtemp_c)}&deg;`
+
+        afterTomorrowWeatherIcon.parentNode.parentNode.querySelector('span:first-of-type').innerHTML = `${weekDays[getCurrentDay() + 2]}`
+        afterTomorrowWeatherIcon.parentNode.parentNode.querySelector('span.temp').innerHTML = `${Math.round(data.forecast.forecastday[2].day.mintemp_c)}&deg;/${Math.round(data.forecast.forecastday[2].day.maxtemp_c)}&deg;`
 
 
   
@@ -55,10 +124,12 @@ export const getWeather = (_name:string, _lat:string, _lon:string) => {
             [Math.round(data.current.feelslike_c).toString(), Math.round(data.current.temp_f).toString()]
         )        
 
-        setBgColor(
-            [document.body], 
+        setTempColors(
+            [document.body, document.querySelector('footer ul li:first-of-type div.mini_wrapper div'), document.querySelector('footer ul li:nth-child(2) div.mini_wrapper div'), document.querySelector('footer ul li:last-of-type div.mini_wrapper div')], 
             data.current.temp_f
         )
+
+        
 
     })
 
@@ -84,7 +155,7 @@ onLocationClick = (e:Event):void => {
 
 
         // ! USERS ACCEPT DATA
-        // TODO LOCALSTORAGE CALL HERE
+        // TODO LOCALSTORAGE CALL HERE - STORE
 
         getWeather(_city, _lat, _lon)
     }

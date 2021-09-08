@@ -27,12 +27,12 @@
 
 
 // ? PARTLY CLOUDY, CLOUDY, LIGHT RAIN, MODERATE RAIN, PATCHY RAIN, RAIN SHOWER
-// ? LIGHT SNOW, PATCHY SNOW, SNOW SHOWER, MODERATE SNOW
+// ? LIGHT SNOW, PATCHY SNOW, SNOW SHOWER, MODERATE SNOW, THUNDER WITH SUN
 // ? ============================================================================
 
 // *  WHITE CLOUD + SUN
 
-._1003_day, ._1006_day, ._1063_day, ._1150_day, ._1153_day, ._1180_day, ._1183_day, ._1198_day, ._1204_day, ._1240_day, ._1249_day, ._1186_day, ._1243_day, ._1246_day, ._1249_day, ._1192_day, ._1210_day, ._1213_day, ._1216_day, ._1219_day, ._1222_day, ._1255_day, ._1258_day, ._1261_day, ._1264_day {
+._1003_day, ._1006_day, ._1063_day, ._1150_day, ._1153_day, ._1180_day, ._1183_day, ._1198_day, ._1204_day, ._1240_day, ._1249_day, ._1186_day, ._1243_day, ._1246_day, ._1249_day, ._1192_day, ._1210_day, ._1213_day, ._1216_day, ._1219_day, ._1222_day, ._1255_day, ._1258_day, ._1261_day, ._1264_day, ._1087_day, ._1273_day, ._1279_day, ._1189_day {
 
 	background: white;
 	border-radius: 50%;
@@ -68,7 +68,7 @@
 
 // *  WHITE CLOUD + MOON
 
-._1003_night, ._1006_night, ._1063_night, ._1150_night, ._1153_night, ._1180_night, ._1183_night, ._1198_night, ._1204_night, ._1240_night, ._1249_night, ._1186_night, ._1243_night, ._1246_night, ._1249_night, ._1192_night, ._1210_night, ._1213_night, ._1216_night, ._1219_night, ._1222_night, ._1255_night, ._1258_night, ._1261_night, ._1264_night {
+._1003_night, ._1006_night, ._1063_night, ._1150_night, ._1153_night, ._1180_night, ._1183_night, ._1198_night, ._1204_night, ._1240_night, ._1249_night, ._1186_night, ._1243_night, ._1246_night, ._1249_night, ._1192_night, ._1210_night, ._1213_night, ._1216_night, ._1219_night, ._1222_night, ._1255_night, ._1258_night, ._1261_night, ._1264_night, ._1087_night, ._1273_night, ._1279_night, ._1189_night {
 	background: white;
 	border-radius: 50%;
 	color:inherit;
@@ -101,9 +101,9 @@
 // ? OVERCAST
 // ? ===============================
 
-// * SINGLE CLOUD
+// * SINGLE WHITE CLOUD
 
-._1009_day, ._1009_night, ._1195_day, ._1195_night, ._1225_day, ._1225_night {
+._1009_day, ._1009_night, ._1195_day, ._1195_night, ._1225_day, ._1225_night, ._1276_day, ._1276_night, ._1282_day, ._1282_night {
 	animation: single_cloud 5s ease-in-out infinite;
 	background: white;
 	border-radius: 50%;
@@ -130,6 +130,21 @@
 
 
 
+
+._1030_day span, ._1030_night span {
+	//SHARED NESTED SPAN
+	display:block;
+	width:inherit;
+	height:inherit;
+	background:inherit;
+	border-radius:inherit;
+}
+
+
+
+
+
+
 // ? MIST
 // ? ===============================
 
@@ -138,13 +153,7 @@
 
 ._1030_day span, ._1030_night span {
 	
-	//SHARED NESTED SPAN
-
-	display:block;
-	width:inherit;
-	height:inherit;
-	background:inherit;
-	border-radius:inherit;
+	display:inherit;
 	
 	width:100%;
 	height:0.625rem;
