@@ -3,12 +3,19 @@ import { temps,
 } from "./globals/globals.dom"
 
 import { Location } from "./types/weather.api"
-import { getColor } from "./utils/utils.index";
+import { getColor, setLocalSettings } from "./utils/utils.index";
+import { LocalData } from "./types/weather.api";
 
 
-export const setWeather = ():void => {
+export const setIcon = (_els:Node[], _codes:string[]):void => {
 
+    _els.forEach((_el, _i) => {
 
+        const _o:HTMLElement = _el as HTMLElement
+
+        _o.className = _codes[_i]
+
+    })
 
 },
 
@@ -25,10 +32,7 @@ setTempColors = (_els:Node[], _deg:number):void => {
         }
 
         
-    })
-
-
-    
+    })   
 
 
 },
@@ -98,9 +102,32 @@ populateSearch = (_data:JSON):DocumentFragment => {
 
 },
 
-switchTempUnits = ():void => {
+setTempUnits = (_units?:string) => {
+
+    _units.length < 1 ? _units == 'celsius' : _units == _units
+
+    Array.from(temps).map((_obj) => {
+
+        const _o = _obj as Element
+        
+        if(_o.hasAttribute('data-celsius') && _o.hasAttribute('data-fahrenheit')){
+
+            setInfo(
+                [_o], 
+                [`${_o.getAttribute(_units)}&deg;`]
+            )
+
+            
+
+        }
+
+    })
+
+},
+
+switchTempUnits = ():void => {   
     
-    //console.log('switching temps')
+    
     
     Array.from(temps).map((_obj) => {
         
@@ -108,30 +135,37 @@ switchTempUnits = ():void => {
         
         if(_o.hasAttribute('data-celsius') && _o.hasAttribute('data-fahrenheit')){
 
-            const _p:HTMLElement = _o.parentElement
+            
 
-            if(_p.className == 'celsius'){
-
-                // _o.innerHTML = `${_o.getAttribute('data-fahrenheit')}&deg;`
-                // _p.className = 'fahrenheit'
+            if(_o.classList.contains('celsius')) {
 
                 setInfo(
                     [_o], 
                     [`${_o.getAttribute('data-fahrenheit')}&deg;`]
                 )
 
-                _p.className = 'fahrenheit'
+                _o.classList.remove('celsius')
+                _o.classList.add('fahrenheit')
+
+                const userData:LocalData = JSON.parse(localStorage.getItem('ow'))
+                userData.settings.defaultTemp = 'fahrenheit'
+                localStorage.setItem('ow', JSON.stringify(userData))
+
+                setLocalSettings('defaultTemp', 'fahrenheit')
 
 
-            }else if(_p.className == 'fahrenheit') {
-                // _o.innerHTML = `${_o.getAttribute('data-celsius')}&deg;`
+            }else if(_o.classList.contains('fahrenheit')) {
 
                 setInfo(
                     [_o], 
                     [`${_o.getAttribute('data-celsius')}&deg;`]
                 )
                 
-                _p.className = 'celsius'
+                _o.classList.remove('fahrenheit')
+                _o.classList.add('celsius')
+
+                setLocalSettings('defaultTemp', 'celsius')
+
             }
 
              

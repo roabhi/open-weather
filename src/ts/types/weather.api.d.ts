@@ -139,3 +139,12 @@ export interface Forecast {
         "location": ExtendedLocation
     }
 }
+
+export interface LocalData extends Object {
+    "city":string,
+    "lat":srtring,
+    "lon":string,
+    "settings": {
+        "defaultTemp":string
+    }
+}

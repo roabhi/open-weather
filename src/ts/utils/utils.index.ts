@@ -1,4 +1,4 @@
-
+import { LocalData } from "../types/weather.api";
 
 export const getColor = (_deg:number):string => {
     
@@ -65,4 +65,22 @@ getCurrentDay = ():number => {
     const rightNow:Date = new Date()
 
     return rightNow.getDay()
+},
+
+getApiTemUnit = (_tempUnit:string):string => {
+
+    return _tempUnit == 'celsius' ? 'c' : 'f'
+
+},
+
+setLocalSettings = (_key:string, _val:string):void => {
+
+    const userData:LocalData = JSON.parse(localStorage.getItem('ow'))
+
+    //console.log(userData.settings[_key])
+
+    userData.settings[_key] = _val
+
+    localStorage.setItem('ow', JSON.stringify(userData))
+
 }
