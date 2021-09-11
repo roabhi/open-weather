@@ -17,10 +17,13 @@ import { switchTempUnits,
          setTempColors, 
          setInfo, 
          setAttributes, 
-         setIcon
+         setIcon,
+         setDomTempUnits,
+         showSearch,
+         hideSearch
 } from "./visual";
 
-import { getApiTemUnit, getCurrentDay, getCurrentHour, getDayLightPhase } from "./utils/utils.index";
+import { getApiTemUnit, getCurrentDay, getCurrentHour, getDayLightPhase, getLocalSettings } from "./utils/utils.index";
 
 
 
@@ -141,6 +144,9 @@ export const getWeather = (_name:string, _lat:string, _lon:string, _defT:string)
         )
 
 
+        setDomTempUnits(_defT)
+
+
         
 
     })
@@ -163,8 +169,8 @@ onLocationClick = (e:Event):void => {
 
         while (top.querySelector('ul').lastChild) top.querySelector('ul').removeChild(top.querySelector('ul').lastChild)
 
-        top.className = 'top'
-
+       
+        console.log('defalt temp is ', getLocalSettings('defaultTemp'))
 
         // ! USERS ACCEPT DATA
         
@@ -173,13 +179,15 @@ onLocationClick = (e:Event):void => {
             "lat":_lat,
             "lon":_lon,
             "settings" : {
-                "defaultTemp":"fahrenheit"
+                "defaultTemp":`${getLocalSettings('defaultTemp') || 'celsius'}`
             }
         }
 
         localStorage.setItem('ow', JSON.stringify(localData))
 
         getWeather(_city, _lat, _lon, localData.settings.defaultTemp)
+
+        hideSearch()
     }
 
     
@@ -228,15 +236,24 @@ onHeaderTempClick = (e:Event):void => {
     switchTempUnits()
 },
 
+onHeaderLocationClick = (e:Event):void => {
+    
+    showSearch()
+},
+
+onSearchCloseBtnClick = (e:Event):void => {
+    hideSearch()
+},
+
 init = ():void => {
 
     
 
     if(localStorage.getItem('ow')){
 
-        top.className = 'top'
+        hideSearch();
 
-        //console.log(JSON.parse(localStorage.getItem('ow')))
+        console.log(JSON.parse(localStorage.getItem('ow')))
 
         const userData:LocalData = JSON.parse(localStorage.getItem('ow'))
         getWeather(userData.city, userData.lat, userData.lon, userData.settings.defaultTemp)       
@@ -246,7 +263,9 @@ init = ():void => {
     }
 
     search.addEventListener('keyup', onSearchKeyUp , false)
+    header.querySelector('h3:first-of-type').addEventListener('click', onHeaderLocationClick, false)
     header.querySelector('h3:last-of-type span').addEventListener('click', onHeaderTempClick, false)
+    top.querySelector('#search+span').addEventListener('click', onSearchCloseBtnClick, false)
 
         
 

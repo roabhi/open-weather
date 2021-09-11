@@ -63,7 +63,6 @@ getCurrentHour = ():number => {
 
 getCurrentDay = ():number => {
     const rightNow:Date = new Date()
-
     return rightNow.getDay()
 },
 
@@ -77,10 +76,26 @@ setLocalSettings = (_key:string, _val:string):void => {
 
     const userData:LocalData = JSON.parse(localStorage.getItem('ow'))
 
-    //console.log(userData.settings[_key])
-
     userData.settings[_key] = _val
 
     localStorage.setItem('ow', JSON.stringify(userData))
+
+},
+
+getLocalSettings = (_key:string):string | undefined => {
+
+    const userData:LocalData = JSON.parse(localStorage.getItem('ow'))
+
+    let _res:string | undefined
+
+    try{
+        _res = userData.settings[_key]
+    }catch(e){
+        //console.log(e)
+    }
+
+    
+
+    return _res
 
 }

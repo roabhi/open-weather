@@ -15,6 +15,16 @@ export const setIcon = (_els:Node[], _codes:string[]):void => {
 
         _o.className = _codes[_i]
 
+        // ! DEBUG CODE DELETE WHEN DONE
+
+        const _p = _o.parentNode as Element
+
+        if(_p.classList.contains('container')) {
+            _o.parentNode.querySelector('b.debug').innerHTML = _codes[_i]
+        }else {
+            _o.parentNode.parentNode.querySelector('b.debug').innerHTML = _codes[_i]
+        }
+
     })
 
 },
@@ -26,7 +36,7 @@ setTempColors = (_els:Node[], _deg:number):void => {
         const _o:HTMLElement = _obj as HTMLElement   
         
         if(_o.tagName == 'BODY') {
-            _o.style.background = getColor(_deg)
+            _o.style.background = _o.style.color = getColor(_deg)
         } else {
             _o.style.color = getColor(_deg)
         }
@@ -44,8 +54,11 @@ setInfo = (_els:Node[], _vals:string[]):void => {
         const _e:Element = _els[_i] as Element
 
         _e.innerHTML = _vals[_i]
+        
 
     })
+
+    
 
 },
 
@@ -102,31 +115,28 @@ populateSearch = (_data:JSON):DocumentFragment => {
 
 },
 
-setTempUnits = (_units?:string) => {
+setDomTempUnits = (_units:string) => {
 
-    _units.length < 1 ? _units == 'celsius' : _units == _units
 
     Array.from(temps).map((_obj) => {
 
         const _o = _obj as Element
         
-        if(_o.hasAttribute('data-celsius') && _o.hasAttribute('data-fahrenheit')){
-
-            setInfo(
-                [_o], 
-                [`${_o.getAttribute(_units)}&deg;`]
-            )
-
-            
-
-        }
+        _o.classList.add(_units)
 
     })
 
 },
 
-switchTempUnits = ():void => {   
-    
+showSearch = ():void => {
+    top.className = 'top using'
+},
+
+hideSearch = ():void => {
+    top.className = 'top'
+},
+
+switchTempUnits = ():void => {      
     
     
     Array.from(temps).map((_obj) => {
@@ -135,7 +145,7 @@ switchTempUnits = ():void => {
         
         if(_o.hasAttribute('data-celsius') && _o.hasAttribute('data-fahrenheit')){
 
-            
+            console.log('trying to switch')
 
             if(_o.classList.contains('celsius')) {
 
