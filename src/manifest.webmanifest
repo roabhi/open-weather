@@ -1,0 +1,15 @@
+{
+  "background_color": "#202020",
+  "description": "Simple, colorful and animated weather forecast app",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "img/128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ],
+  "name": "Open Weather",
+  "short_name": "OW",
+  "start_url": "/ow-new/index.html"
+}
