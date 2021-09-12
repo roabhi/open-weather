@@ -111,6 +111,19 @@ div.top {
                 
                 //display:none;
             }
+
+            &:first-of-type {
+                background:#202020;
+                color:#ebebeb;
+                border-bottom:#313131 0.063rem solid;
+
+                font-style: italic;
+
+                a {
+                    position:static;
+                    text-decoration: underline;
+                }
+            }
         }
     }
 
@@ -184,6 +197,10 @@ div.holder {
         justify-content: center;
         flex-direction: column;
         
+        #big {
+            transform:scale(1.15);
+            margin-top:6rem;
+        }
     }
 
     footer {
@@ -220,6 +237,8 @@ div.holder {
                 span:first-of-type, span:last-of-type {
                     display:block;
                 }
+
+                
 
                 div.mini_wrapper {
                     // color:#85ccc5; /* This needs to change dinamically	*/

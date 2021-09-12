@@ -76,7 +76,25 @@ setAttributes = (_els:Node[], _labels:string[], _vals:string[]):void => {
 
 insertSearch = (_fragUl:DocumentFragment):void => {
 
+    const linkBackLi:HTMLLIElement = document.createElement('li'),
+          linkBackSpan:HTMLSpanElement = document.createElement('span') ,
+          linkBackA:HTMLAnchorElement = document.createElement('a')
+
+    linkBackA.setAttribute('href', 'https://www.weatherapi.com/')
+    linkBackA.setAttribute('target', '_blank')
+    linkBackA.setAttribute('title', 'Weather API')
+    linkBackA.textContent = 'Weather API'
+
+    linkBackSpan.textContent = 'App powered by '
+
+    linkBackLi.appendChild(linkBackSpan)
+    linkBackLi.appendChild(linkBackA)
+
+    _fragUl.prepend(linkBackLi)
+
     top.querySelector('ul').appendChild(_fragUl)
+
+    
 
 },
 
@@ -145,7 +163,6 @@ switchTempUnits = ():void => {
         
         if(_o.hasAttribute('data-celsius') && _o.hasAttribute('data-fahrenheit')){
 
-            console.log('trying to switch')
 
             if(_o.classList.contains('celsius')) {
 

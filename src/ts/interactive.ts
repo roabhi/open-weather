@@ -23,7 +23,12 @@ import { switchTempUnits,
          hideSearch
 } from "./visual";
 
-import { getApiTemUnit, getCurrentDay, getCurrentHour, getDayLightPhase, getLocalSettings } from "./utils/utils.index";
+import { getApiTemUnit, 
+         getCurrentDay, 
+         getCurrentHour, 
+         getDayLightPhase,
+          getLocalSettings 
+} from "./utils/utils.index";
 
 
 
@@ -170,8 +175,6 @@ onLocationClick = (e:Event):void => {
         while (top.querySelector('ul').lastChild) top.querySelector('ul').removeChild(top.querySelector('ul').lastChild)
 
        
-        console.log('defalt temp is ', getLocalSettings('defaultTemp'))
-
         // ! USERS ACCEPT DATA
         
         const localData:LocalData = {
@@ -252,9 +255,6 @@ init = ():void => {
     if(localStorage.getItem('ow')){
 
         hideSearch();
-
-        console.log(JSON.parse(localStorage.getItem('ow')))
-
         const userData:LocalData = JSON.parse(localStorage.getItem('ow'))
         getWeather(userData.city, userData.lat, userData.lon, userData.settings.defaultTemp)       
 
@@ -262,7 +262,12 @@ init = ():void => {
 
     }
 
+    // ! WORK ON A WAY TO SQUEZZE API CALLS BY CREATING A BUTTON TO SERVE RESULTS FROM SEARCH API  
+
     search.addEventListener('keyup', onSearchKeyUp , false)
+
+
+
     header.querySelector('h3:first-of-type').addEventListener('click', onHeaderLocationClick, false)
     header.querySelector('h3:last-of-type span').addEventListener('click', onHeaderTempClick, false)
     top.querySelector('#search+span').addEventListener('click', onSearchCloseBtnClick, false)
