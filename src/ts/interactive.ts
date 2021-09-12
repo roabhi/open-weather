@@ -20,7 +20,8 @@ import { switchTempUnits,
          setIcon,
          setDomTempUnits,
          showSearch,
-         hideSearch
+         hideSearch,
+         cleanResults
 } from "./visual";
 
 import { getApiTemUnit, 
@@ -172,7 +173,7 @@ onLocationClick = (e:Event):void => {
         })
 
 
-        while (top.querySelector('ul').lastChild) top.querySelector('ul').removeChild(top.querySelector('ul').lastChild)
+        cleanResults()
 
        
         // ! USERS ACCEPT DATA
@@ -219,13 +220,11 @@ onSearchKeyUp = (e:Event):void => {
 
     const _s = e.target as HTMLInputElement
 
-    while ( top.querySelector('ul').lastChild ) {
+    Array.from(top.querySelectorAll('ul li')).map((_obj) => {
+        _obj.removeEventListener('click', onLocationClick, false)
+    })
 
-        top.querySelector('ul').lastChild.removeEventListener('click', onLocationClick, false)
-        
-        top.querySelector('ul').removeChild( top.querySelector('ul').lastChild )
-
-    }
+    cleanResults()
 
     if(_s.value.length > 2) {       
 
@@ -245,6 +244,7 @@ onHeaderLocationClick = (e:Event):void => {
 },
 
 onSearchCloseBtnClick = (e:Event):void => {
+    cleanResults()
     hideSearch()
 },
 

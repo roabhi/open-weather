@@ -152,6 +152,11 @@ showSearch = ():void => {
 
 hideSearch = ():void => {
     top.className = 'top'
+
+},
+
+cleanResults = ():void => {
+    while (top.querySelector('ul').lastChild) top.querySelector('ul').removeChild(top.querySelector('ul').lastChild)    
 },
 
 switchTempUnits = ():void => {      
