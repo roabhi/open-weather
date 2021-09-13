@@ -1,6 +1,12 @@
 
 @import url(./contents.scss);
 
+:root {
+	--scale-size:1.35;
+}
+
+
+
 // ? ALL ICONS WITH 
 // ? ===============================
 
@@ -9,8 +15,8 @@
 ._1000_day, ._1030_day {
 	border-radius: 50%;
 	position:relative;	
-	height: 5rem;
-	width: 5rem; 
+	height: calc(5rem * var(--scale-size));
+	width: calc(5rem * var(--scale-size)); 
 }
 
 // * MOON
@@ -18,8 +24,8 @@
 ._1000_night, ._1030_night {
 	border-radius: 50%;	
 	top: -1.625rem; 
-	height: 6.25rem;
-	width: 6.25rem;
+	height: calc(6.25rem * var(--scale-size));
+	width: calc(6.25rem * var(--scale-size));
 	position: relative;
 	left:2.15rem;	
 	box-shadow: -1.563rem 0.625rem #ddf7ff;	
@@ -56,8 +62,8 @@
 		3.25rem -1.25rem 0 1.125rem rgba(255,255,0,0.1);
 
 		
-	height: 3.250rem;
-	width: 3.250rem; 
+	height: calc(3.250rem * var(--scale-size));
+	width: calc(3.250rem * var(--scale-size)); 
 	
 	animation:partially_cloud 5s ease-in-out infinite;
 	
@@ -89,8 +95,8 @@
 		5.5rem -2.75rem 0 0.5rem currentColor,
 		4.35rem -2.5rem 0 0.5rem #ddf7ff;
 		
-	height: 3.250rem;
-	width: 3.250rem; 	
+	height: calc(3.250rem * var(--scale-size));
+	width: calc(3.250rem * var(--scale-size)); 	
 	
 	animation:partially_cloud_night 5s ease-in-out infinite;
 	
@@ -121,8 +127,8 @@
 		5.125rem 0.250rem 0 -0.563rem white;
 
 		
-	height: 3.250rem;
-	width: 3.250rem; 
+	height: calc(3.250rem * var(--scale-size));
+	width: calc(3.250rem * var(--scale-size)); 
 	
 	margin:1.438rem 0 0 -4.813rem;
 }
