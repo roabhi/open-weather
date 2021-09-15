@@ -15,15 +15,15 @@ export const setIcon = (_els:Node[], _codes:string[]):void => {
 
         _o.className = _codes[_i]
 
-        // ! DEBUG CODE DELETE WHEN DONE
+        // // ! DEBUG CODE DELETE WHEN DONE
 
-        const _p = _o.parentNode as Element
+        // const _p = _o.parentNode as Element
 
-        if(_p.classList.contains('container')) {
-            _o.parentNode.querySelector('b.debug').innerHTML = _codes[_i]
-        }else {
-            _o.parentNode.parentNode.querySelector('b.debug').innerHTML = _codes[_i]
-        }
+        // if(_p.classList.contains('container')) {
+        //     _o.parentNode.querySelector('b.debug').innerHTML = _codes[_i]
+        // }else {
+        //     _o.parentNode.parentNode.querySelector('b.debug').innerHTML = _codes[_i]
+        // }
 
     })
 
@@ -100,34 +100,50 @@ insertSearch = (_fragUl:DocumentFragment):void => {
 
 populateSearch = (_data:JSON):DocumentFragment => {
 
+
+
     const fragment:DocumentFragment = document.createDocumentFragment(),
           data = _data as { [key: string]: any } // ? Work around to get the returned JSON iterable by a string value as index
+         
+        if(data.length) {
 
-        for(let i in data ) {
-            const location = data[i] as Location
+            for(let i in data ) {
+                const location = data[i] as Location
+    
+                let newLi:HTMLLIElement = document.createElement('li'),
+                    newSpan:HTMLSpanElement = document.createElement('span'),
+                    newLink:HTMLAnchorElement = document.createElement('a')
+    
+                newLink.setAttribute('href', '#')
+                newLink.innerHTML = '+'
+                newLink.setAttribute('title', 'add to locations')
+    
+                newLi.setAttribute('data-city', location.name)
+                newLi.setAttribute('data-region', location.region)
+                newLi.setAttribute('data-country', location.country)
+                newLi.setAttribute('data-lat', location.lat.toString())
+                newLi.setAttribute('data-lon', location.lon.toString())
+    
+                newLi.setAttribute('title', 'use this location')
+                newSpan.innerHTML = `${location.name}`
+    
+                newLi.append(newSpan, newLink)
+    
+                fragment.append(newLi)            
+    
+            }
 
-            let newLi:HTMLLIElement = document.createElement('li'),
-                newSpan:HTMLSpanElement = document.createElement('span'),
-                newLink:HTMLAnchorElement = document.createElement('a')
+        }else{
+            let newLi:HTMLLIElement = document.createElement('li')
 
-            newLink.setAttribute('href', '#')
-            newLink.innerHTML = '+'
-            newLink.setAttribute('title', 'add to locations')
+            newLi.classList.add('empty')
+            newLi.textContent = 'No results found'
 
-            newLi.setAttribute('data-city', location.name)
-            newLi.setAttribute('data-region', location.region)
-            newLi.setAttribute('data-country', location.country)
-            newLi.setAttribute('data-lat', location.lat.toString())
-            newLi.setAttribute('data-lon', location.lon.toString())
-
-            newLi.setAttribute('title', 'use this location')
-            newSpan.innerHTML = `${location.name}`
-
-            newLi.append(newSpan, newLink)
-
-            fragment.append(newLi)            
+            fragment.append(newLi)
 
         }
+
+        
 
     return fragment
 
@@ -157,6 +173,16 @@ hideSearch = ():void => {
 
 cleanResults = ():void => {
     while (top.querySelector('ul').lastChild) top.querySelector('ul').removeChild(top.querySelector('ul').lastChild)    
+},
+
+enableButton = (_button:HTMLButtonElement):void => {
+
+    _button.disabled = false
+
+},
+
+disableButton = (_button:HTMLButtonElement):void => {
+    _button.disabled = true
 },
 
 switchTempUnits = ():void => {      

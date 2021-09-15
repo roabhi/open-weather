@@ -4,7 +4,8 @@ import { top,
          currentWeatherIcon,
          laterWeatherIcon,
          tomorrowWeatherIcon,
-         afterTomorrowWeatherIcon 
+         afterTomorrowWeatherIcon, 
+         submit
 } from "./globals/globals.dom";
 
 import { Forecast, LocalData } from './types/weather.api';
@@ -21,7 +22,9 @@ import { switchTempUnits,
          setDomTempUnits,
          showSearch,
          hideSearch,
-         cleanResults
+         cleanResults,
+         enableButton,
+         disableButton
 } from "./visual";
 
 import { getApiTemUnit, 
@@ -202,11 +205,17 @@ onLocationClick = (e:Event):void => {
 searchLocation = (_val:string):void => {
     const search = fecther.apiCall(`http://api.weatherapi.com/v1/search.json?key=${key}&q=${_val}`).then( (_res:JSON) => {
         
-        const _fragUl:DocumentFragment = populateSearch(_res)
-    
-        Array.from(_fragUl.querySelectorAll('li')).map((_obj) => {
-            _obj.addEventListener('click', onLocationClick, false)
-        })
+        const _fragUl:DocumentFragment = populateSearch(_res),
+              firstChild = _fragUl.firstChild as Element 
+        
+        if(!firstChild.classList.contains('empty')) {
+
+            Array.from(_fragUl.querySelectorAll('li')).map((_obj) => {
+                _obj.addEventListener('click', onLocationClick, false)
+            })
+
+        }   
+        
 
         insertSearch(_fragUl)
 
@@ -215,22 +224,33 @@ searchLocation = (_val:string):void => {
     })
 },
 
+onSearchKeyDown = (e:Event):void => {
 
-onSearchKeyUp = (e:Event):void => {
+    const _s = search as HTMLInputElement,
+          _b = submit as HTMLButtonElement
 
-    const _s = e.target as HTMLInputElement
+    if(_s.value.length > 2) { 
+        enableButton(_b)
+    }else {
+        disableButton(_b)
+    }
 
+},
+
+onSearchSubmit = (e:Event):void => {
+
+
+    const _s = search as HTMLInputElement   
+    
     Array.from(top.querySelectorAll('ul li')).map((_obj) => {
         _obj.removeEventListener('click', onLocationClick, false)
     })
 
     cleanResults()
 
-    if(_s.value.length > 2) {       
+    searchLocation( _s.value )    
 
-        searchLocation( _s.value )
-
-    }
+    e.preventDefault()
 
 },
 
@@ -260,17 +280,23 @@ init = ():void => {
 
 
 
+    }else {
+        showSearch()
     }
 
     // ! WORK ON A WAY TO SQUEZZE API CALLS BY CREATING A BUTTON TO SERVE RESULTS FROM SEARCH API  
 
-    search.addEventListener('keyup', onSearchKeyUp , false)
+    search.addEventListener('keydown', onSearchKeyDown , false)
+
+    submit.addEventListener('click', onSearchSubmit, false)
 
 
 
     header.querySelector('h3:first-of-type').addEventListener('click', onHeaderLocationClick, false)
     header.querySelector('h3:last-of-type span').addEventListener('click', onHeaderTempClick, false)
     top.querySelector('#search+span').addEventListener('click', onSearchCloseBtnClick, false)
+
+
 
         
 

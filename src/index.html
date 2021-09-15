@@ -15,12 +15,14 @@
   <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
-    <div id="top" class="top using">
+    <div id="top" class="top">
       <form id="form1" runat="server">
           <div>
-              <!-- <input id="search" type="text" name="input" autocomplete="off" placeholder="Search Location"> -->
-              <input id="search" type="text" name="input" autocomplete="off" placeholder="Type Location + Enter">
-          <span title="close"></span>			
+            <input id="search" type="text" name="input" autocomplete="off" placeholder="Enter Location">
+            <span title="close"></span>			
+          </div>
+          <div>
+            <button type="button" disabled id="submit">search</button>
           </div>			
         </form>
       <ul role="list"></ul>		
@@ -30,13 +32,13 @@
 			<h3><span title="search location" role="button">no location</span><br/>now</h3><h3><span class="temp" title="swap degrees meassure" data-celsius="" data-fahrenheit="" role="button">&deg;</span></h3>
 		</header>
 		<div id="main" role="main" class="container faded">
-			<div id="big" class=""><span></span></div><b class="debug">1006</b>
+			<div id="big" class=""><span></span></div><!--<b class="debug">1006</b>-->
 		</div>
 		<footer role="complementary">
 			<ul role="list">
-				<li role="listitem"><span>later</span><div class="mini_wrapper"><div class=""><span></span></div></div><span data-celsius="" data-fahrenheit="" class="temp "><!--15&deg;/25&deg;--></span><b class="debug">1006</b></li>
-        <li role="listitem"><span>tomorrow</span><div class="mini_wrapper"><div class=""><span></span></div></div><span data-celsius="" data-fahrenheit="" class="temp"><!--15&deg;/25&deg;--></span><b class="debug">1006</b></li>
-        <li role="listitem"><span>&mdash;</span><div class="mini_wrapper"><div class=""><span></span></div></div><span data-celsius="" data-fahrenheit="" class="temp"><!--15&deg;/25&deg;--></span><b class="debug">1006</b></li>
+				<li role="listitem"><span>later</span><div class="mini_wrapper"><div class=""><span></span></div></div><span data-celsius="" data-fahrenheit="" class="temp "><!--15&deg;/25&deg;--></span><!--<b class="debug">1006</b></li>-->
+        <li role="listitem"><span>tomorrow</span><div class="mini_wrapper"><div class=""><span></span></div></div><span data-celsius="" data-fahrenheit="" class="temp"><!--15&deg;/25&deg;--></span><!--<b class="debug">1006</b></li>-->
+        <li role="listitem"><span>&mdash;</span><div class="mini_wrapper"><div class=""><span></span></div></div><span data-celsius="" data-fahrenheit="" class="temp"><!--15&deg;/25&deg;--></span><!--<b class="debug">1006</b></li>-->
 			</ul>
 		</footer>		
 	</div>

@@ -1,5 +1,6 @@
 export const top:Element = document.getElementById('top'),
              search:Element = document.getElementById('search'),
+             submit:Element = document.getElementById('submit'),
              header:Element = document.querySelector('header'),
              temps:NodeList = document.querySelectorAll('.temp'),
              currentWeatherIcon:Element = document.getElementById('big'),

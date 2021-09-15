@@ -5,7 +5,7 @@
 
 // * DAYTIME
 
-._1000_day:before, ._1030_day:before {
+._1000_day:before, ._1030_day:before, ._1135_day:before, ._1147_day:before {
 
 	background: rgba(255,255,0,1); 
 	border-radius: 50%; 
@@ -15,22 +15,13 @@
 	width: 5rem;  	
 	position:absolute;
 	left: 0; 
+	right:0;
+	margin:0 auto;
 	top: 0;		
 	border: 0.313rem solid rgba(255,255,0,0.5);
 }
 
-// TODO NOT SURE IF NECESSARY
-// ._1000_day:after {
-//     position:absolute;
-// 	width:5rem;
-// 	height:5rem;
-// 	border-radius: 50%;
-// 	content:'';
-// 	top:0;
-// 	left:0;
-// }
-
-._1000_night:before, ._1030_night:before {
+._1000_night:before, ._1030_night:before, ._1135_night:before, ._1147_night:before {
     content:'';
 	background:transparent;
 	width:0.250rem;
@@ -69,7 +60,7 @@
 
 //  *  Partly Cloudy, Cloudy
 
-._1009_day:after, ._1009_night:after {
+._1009_day:after, ._1009_night:after, ._1114_day:after, ._1114_night:after, ._1117_day:before, ._1117_night:before, ._1171_day:before, ._1171_night:before, ._1195_day:after, ._1195_night:after, ._1201_day:before, ._1201_night:before, ._1207_day:after, ._1207_night:after, ._1225_day:after, ._1225_night:after, ._1237_day:after, ._1237_night:after, ._1276_day:after, ._1276_night:after, ._1282_day:after, ._1282_night:after {
     background: #000000;
 	border-radius: 50%;
 	content: '';
@@ -90,11 +81,11 @@
 
 // * DAY
 
-._1030_day:before {
+._1030_day:before, ._1135_day:before, ._1147_day:before {
     animation:mist_daytime 8s ease infinite;
-}
+} // * JUST FOR THE LITTE SUN ANIMATION
 
-._1030_day span:before, ._1030_night span:before {
+._1030_day span:before, ._1030_night span:before, ._1135_day span:before, ._1135_night span:before, ._1147_day span:before, ._1147_night span:before {
     content:'';
 	display:block;
 	background:transparent;
@@ -110,20 +101,20 @@
 		-0.25rem 3rem 0 0 #fafafa;
 	
 	animation:mist 10s ease infinite;
-}
+} // * COMMON
 
-// * NIGHT
 
-._1030_night span:before {
+
+._1030_night span:before, ._1135_night span:before, ._1147_night span:before {
     top:1.65rem;
 	left:-1.5rem;
 	width:5rem;
-}
+} // * NIGHT POSITON
 
 // ? LIGHT RAIN
 // ? ===============================
 
-._1063_day:before, ._1063_night:before, ._1150_day:before, ._1150_night:before, ._1153_day:before, ._1153_night:before, ._1180_day:before, ._1180_night_before, ._1183_day:before, ._1183_night:before, ._1198_day:before, ._1198_night:before, ._1204_day:before, ._1207_night:before, ._1240_day:before, ._1240_night:before, ._1249_day:before, ._1249_night:before {
+._1063_day:before, ._1063_night:before, ._1150_day:before, ._1150_night:before, ._1153_day:before, ._1153_night:before, ._1180_day:before, ._1180_night:before, ._1183_day:before, ._1183_night:before, ._1198_day:before, ._1198_night:before, ._1204_day:before, ._1204_night:before, ._1207_night:before, ._1240_day:before, ._1240_night:before, ._1249_day:before, ._1249_night:before, ._1168_day:before, ._1168_night:before, ._1237_day:before, ._1237_night:before {
 	content: '';
 	background: transparent;
 	border-radius: 50%;
@@ -138,7 +129,7 @@
 // ? MODERATE RAIN
 // ? ===============================
 
-._1186_day:before, ._1186_night:before, ._1243_day:before, ._1243_night:before, ._1246_day:before, ._1246_night:before, ._1246_day:before, ._1249_night:before, ._1189_day:before, ._1189_night:before {
+._1186_day:before, ._1186_night:before, ._1243_day:before, ._1243_night:before, ._1246_day:before, ._1249_night:before, ._1189_day:before, ._1189_night:before {
 	content: '';
 	background: transparent;
 	border-radius: 50%;
@@ -153,7 +144,7 @@
 // ? HEAVY RAIN
 // ? ===============================
 
-._1192_day:before, ._1192_night:before, ._1195_day:before, ._1195_night:before {
+._1192_day:before, ._1192_night:before, ._1246_day:before, ._1246_night:before, ._1252_day:before, ._1252_night:before {
 
 	content: '';
 	background: transparent;
@@ -171,7 +162,7 @@
 // ? LIGHT SNOW
 // ? ===============================
 
-._1210_day:before, ._1210_night:before, ._1213_day:before, ._1213_night:before, ._1222_day:before, ._1222_night:before, ._1255_day:before, ._1255_night:before, ._1261_day:before, ._1261_night:before  {
+._1210_day:before, ._1210_night:before, ._1213_day:before, ._1213_night:before, ._1255_day:before, ._1255_night:before, ._1261_day:before, ._1261_night:before , ._1066_day:before, ._1066_night:before, ._1069_day:before, ._1069_night:before, ._1072_day:before, ._1072_night:before {
 
 	animation: light_snow 2s linear infinite ;
 	content: '';
@@ -201,7 +192,7 @@
 // ? HEAVY SNOW
 // ? ===============================
 
-._1225_day:before, ._1225_night:before {
+._1222_day:before, ._1222_night:before, ._1225_day:before, ._1225_night:before {
 
 	animation: moderate_snow 0.5s linear infinite; /* For hard snow use moderate snow but make the loop shorter	*/
 	content: '';
@@ -236,12 +227,12 @@
 	transform-origin: 50% -1.875rem;
 }
 
-// ? RAIN FOR ICONS WITH ALREADY RAIN OR SNOW AND SUN OR MOON
+// ? RAIN ICONS WITH ALREADY RAIN OR SNOW AND SUN OR MOON
 // ? WE USE THE SPAN TO DISPLAY ADDTIONAL WEATHER EFFECTS
 // ? span:after is for SNOW, span:before is for RAIN
 // ? =========================================
 
-._1273_day span:before, ._1273_night span:before {
+._1273_day span:before, ._1273_night span:before, ._1261_day span:before, ._1261_night span:before {
 	content: '';
 	background: transparent;
 	border-radius: 50%;
@@ -253,7 +244,7 @@
 	animation:light_rain 1s linear infinite ;
 } // ? LIGHT RAIN 
 
-._1276_day span:before, ._1276_night span:before {
+._1276_day span:before, ._1276_night span:before, ._1171_day span:before, ._1171_night span:before, ._1264_day span:before, ._1264_night span:before  {
 
 	content: '';
 	background: transparent;
@@ -267,12 +258,27 @@
 
 } // ? MODERATE RAIN
 
+
+._1195_day span:before, ._1195_night span:before, ._1201_day span:before, ._1201_night span:before, ._1207_day span:before, ._1207_night span:before {
+
+	content: '';
+	background: transparent;
+	border-radius: 50%;
+	display: block;
+	height: 0.375rem;
+	width: 0.188rem;
+	opacity: 0.3;
+	
+	animation:moderate_rain .5s linear infinite
+
+}// ? HEAVY RAIN
+
 // ? SNOW FOR ICONS WITH ALREADY RAIN OR SNOW AND SUN OR MOON
 // ? WE USE THE SPAN TO DISPLAY ADDTIONAL WEATHER EFFECTS
 // ? span:after is for SNOW, span:before is for RAIN
 // ? =========================================
 
-._1279_day span:after, ._1279_night span:after {
+._1279_day span:after, ._1279_night span:after, ._1237_day span:after, ._1237_night span:after, ._1249_day span:after, ._1249_night span:after {
 	animation: light_snow 2s linear infinite ;
 	content: '';
 	border-radius: 50%;
@@ -283,7 +289,7 @@
 	transform: scale(.9);
 }
 
-._1282_day span:after, ._1282_night span:after {
+._1282_day span:after, ._1282_night span:after, ._1114_day span:after, ._1114_night span:after, ._1117_day span:after, ._1117_night span:after, ._1171_day span:after, ._1171_night span:after, ._1252_day span:after, ._1252_night span:after {
 	animation: moderate_snow 1s linear infinite ;
 	content: '';
 	border-radius: 50%;	
@@ -293,6 +299,8 @@
 	opacity: 0.8;
 	transform: scale(.9);
 }
+
+
 
 
 
