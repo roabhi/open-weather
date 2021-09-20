@@ -3,7 +3,9 @@
 
 body {
     background:#202020 none;
+    // background:#85ccc5;
     overflow-y:hidden;
+    // color:#85ccc5;
     transition:background 0.5s linear;
 }
 
@@ -242,7 +244,7 @@ div.holder {
         
         #big {
             // transform:scale(1.15);
-            margin-top:6rem;
+            margin-top:2.50rem;
         }
     }
 
@@ -299,8 +301,8 @@ div.holder {
                         
                         &._1003_day, &._1003_night, &._1192_day, &._1192_night, &._1009_day, &._1009_night, &._1189_day, &._1189_night, &._1063_day, &._1063_night, &._1006_day, &._1006_night, &._1195_day, &._1195_night, &._1240_day, &._1240_night, &._1066_day, &._1066_night, &._1069_day, &._1069_night, &._1072_day, &._1072_night, &._1087_day, &._1087_night, &._1114_day, &._1114_night, &._1117_day, &._1117_night, &._1150_day, &._1150_night, &._1153_day, &._1153_night, &._1168_day, &._1168_night, &._1171_day, &._1171_night, &._1183_day, &._1183_night, &._1186_day, &._1186_nigh, &._1198_day, &._1198_night, &._1201_day, &._1021_night, &._1204_day, &._1204_night, &._1207_day, &._1207_night, &._1210_day, &._1210_night, &._1213_day, &._1213_night, &._1216_day, &._1216_night, &._1219_day, &._1219_night, &._1222_day, &._1222_night, &._1225_day, &._1225_night, &._1237_day, &._1237_night, &._1243_day, &._1243_night, &._1246_day, &._1246_night, &._1249_day, &._1249_night, &._1252_day, &._1252_night, &._1255_day, &._1255_night, &._1258_day, &._1258_night, &._1261_day, &._1261_night, &._1264_day, &._1264_night, &._1273_day, &._1273_night, &._1276_day, &._1276_night, &._1279_day, &._1279_night, &._1282_day, &._1282_night {
                             margin:0 auto;
-                            left:-2.125rem;
-                            top:1.5rem;
+                            left:calc(-2.125rem * var(--scale-size));
+                            top:calc(0.5rem * var(--scale-size));
                             
                         } // ? FIX FOR ICONS WITH CLOUDS
 
