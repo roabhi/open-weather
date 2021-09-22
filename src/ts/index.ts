@@ -34,8 +34,6 @@ const ready = (e:Event) => {
 
     document.removeEventListener('DOMContentLoaded', init, false)
 
-    //! CHECK CURRENT LOCALSTORAGE STATE
-
     init()    
 
 }

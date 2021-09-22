@@ -15,15 +15,6 @@ export const setIcon = (_els:Node[], _codes:string[]):void => {
 
         _o.className = _codes[_i]
 
-        // // ! DEBUG CODE DELETE WHEN DONE
-
-        // const _p = _o.parentNode as Element
-
-        // if(_p.classList.contains('container')) {
-        //     _o.parentNode.querySelector('b.debug').innerHTML = _codes[_i]
-        // }else {
-        //     _o.parentNode.parentNode.querySelector('b.debug').innerHTML = _codes[_i]
-        // }
 
     })
 
