@@ -233,6 +233,7 @@ onSearchKeyDown = (e:Event):void => {
         enableButton(_b)
     }else {
         disableButton(_b)
+        cleanResults()
     }
 
 },
