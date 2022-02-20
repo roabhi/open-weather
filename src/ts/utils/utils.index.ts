@@ -91,10 +91,8 @@ getLocalSettings = (_key:string):string | undefined => {
     try{
         _res = userData.settings[_key]
     }catch(e){
-        alert(e)
-    }
-
-    
+        //console.log(e)
+    }   
 
     return _res
 

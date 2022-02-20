@@ -43,7 +43,7 @@ export const getWeather = (_name:string, _lat:string, _lon:string, _defT:string)
 
     
 
-    fecther.apiCall(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${_lat},${_lon}&days=3&aqi=yes&alerts=yes`)
+    fecther.apiCall(`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${_lat},${_lon}&days=3&aqi=yes&alerts=yes`)
     .then((_res) => {
         
         const data:Forecast = _res as unknown as Forecast  
@@ -78,7 +78,7 @@ export const getWeather = (_name:string, _lat:string, _lon:string, _defT:string)
                     header.querySelector('h3:last-of-type span')
                 ], 
             [
-                    _name.substr(0, _name.indexOf(',')), 
+                    _name, 
                     `${Math.round(data.current[`temp_${ getApiTemUnit(_defT) }`]).toString()}&deg;` 
                 ]
         )
@@ -203,7 +203,7 @@ onLocationClick = (e:Event):void => {
 },
 
 searchLocation = (_val:string):void => {
-    const search = fecther.apiCall(`http://api.weatherapi.com/v1/search.json?key=${key}&q=${_val}`).then( (_res:JSON) => {
+    const search = fecther.apiCall(`https://api.weatherapi.com/v1/search.json?key=${key}&q=${_val}`).then( (_res:JSON) => {
         
         const _fragUl:DocumentFragment = populateSearch(_res),
               firstChild = _fragUl.firstChild as Element 
@@ -214,12 +214,9 @@ searchLocation = (_val:string):void => {
                 _obj.addEventListener('click', onLocationClick, false)
             })
 
-        }   
-        
+        }          
 
-        insertSearch(_fragUl)
-
-    
+        insertSearch(_fragUl)   
 
     })
 },

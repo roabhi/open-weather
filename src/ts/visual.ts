@@ -43,7 +43,7 @@ setInfo = (_els:Node[], _vals:string[]):void => {
     _els.forEach((_el,_i, never) => {
 
         const _e:Element = _els[_i] as Element
-
+        
         _e.innerHTML = _vals[_i]
         
 
@@ -116,11 +116,11 @@ populateSearch = (_data:JSON):DocumentFragment => {
                 newLi.setAttribute('data-lon', location.lon.toString())
     
                 newLi.setAttribute('title', 'use this location')
-                newSpan.innerHTML = `${location.name}`
+                newSpan.innerHTML = `${location.name}, ${location.region}, ${location.country}`
     
                 newLi.append(newSpan, newLink)
     
-                fragment.append(newLi)            
+                fragment.append(newLi) 
     
             }
 
