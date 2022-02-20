@@ -230,6 +230,7 @@ onSearchKeyDown = (e:Event):void => {
         enableButton(_b)
     }else {
         disableButton(_b)
+        cleanResults()
     }
 
 },
@@ -281,10 +282,8 @@ init = ():void => {
         showSearch()
     }
 
-    // ! WORK ON A WAY TO SQUEZZE API CALLS BY CREATING A BUTTON TO SERVE RESULTS FROM SEARCH API  
 
     search.addEventListener('keydown', onSearchKeyDown , false)
-
     submit.addEventListener('click', onSearchSubmit, false)
 
 
